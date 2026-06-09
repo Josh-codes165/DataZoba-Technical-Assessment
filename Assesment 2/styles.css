@@ -1,0 +1,111 @@
+:root {
+    --bg-main: #0F1B14;
+    --bg-card: #1A2E1F;
+    --color-gold: #D4A017;
+    --color-green-border: #2E5A39;
+    --color-text-main: #E2E8F0;
+    --color-text-muted: #94A3B8;
+    
+    --font-serif: 'Cinzel', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: var(--font-sans);
+    color: var(--color-text-main);
+    min-height: 100vh;
+}
+
+.presentation-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.story-card {
+    background-color: var(--bg-card);
+    padding: 20px;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+.topic-tag {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    font-variant: small-caps;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-green-border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.story-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.data-stat {
+    font-family: var(--font-sans);
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+.stat-divider {
+    border: none;
+    height: 1px;
+    background-color: var(--color-gold);
+    opacity: 0.4;
+    width: 100%;
+}
+
+.story-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.cta-link {
+    color: var(--color-gold);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s ease;
+}
+
+.cta-link:hover {
+    text-decoration: underline;
+    gap: 10px;
+}

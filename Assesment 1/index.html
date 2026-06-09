@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Afrobeats Takeover</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>The Afrobeats Takeover</h1>
+    <p>
+      By 2024, Afrobeats was streamed more than twice as much outside Africa as
+      within Africa, completing its transformation from a regional sound into a
+      global movement.
+    </p>
+
+    <h2>How Afrobeats Streaming Grew Worldwide</h2>
+    <canvas id="streamsChart"></canvas>
+    <h2>Which Songs Drove Global Reach?</h2>
+    <p>
+      Songs that charted in the most countries helped introduce Afrobeats to new
+      audiences worldwide.
+    </p>
+    <canvas id="musicCharts"></canvas>
+    <p>
+      While Afrobeats originated in African markets, the fastest growth came
+      from audiences outside Africa. Songs such as Calm Down, Love Nwantiti, and
+      Essence charted across dozens of countries and helped transform the genre
+      into a global phenomenon
+    </p>
+    <h2>Key Insights</h2>
+    <ul>
+      <li>
+        Calm Down charted in 58 countries, the highest of any song in the
+        dataset.
+      </li>
+      <li>
+        Love Nwantiti generated 15.4 million TikTok videos, making it the most
+        viral song in the dataset.
+      </li>
+      <li>
+        Streams in Africa grew from 669.5 million in 2019 to 2.67 billion in
+        2024.
+      </li>
+      <li>
+        Streams outside Africa grew from 1.39 billion in 2019 to 5.61 billion in
+        2024.
+      </li>
+    </ul>
+    <script>
+      const years = ["2019", "2020", "2021", "2022", "2023", "2024"];
+      const africanMarkets = [669.5, 875.3, 1225.2, 1846.1, 2331.0, 2666.7];
+      const nonAfricanMarkets = [
+        1389.5, 1878.2, 2562.0, 3843.8, 4864.2, 5611.6,
+      ];
+      const breakThroughSongs = {
+        2019: "Love Nwantiti",
+        2020: "Essence",
+        2021: "Peru",
+        2022: "Calm Down",
+        2023: "Higher",
+      };
+
+      let myChart = document.getElementById("streamsChart").getContext("2d");
+
+      let chart = new Chart(myChart, {
+        type: "line",
+        data: {
+          labels: years,
+          datasets: [
+            {
+              label: "Streams in African Markets (Millions)",
+              data: africanMarkets,
+            },
+            {
+              label: "Streams outside African Markets (Millions)",
+              data: nonAfricanMarkets,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+
+          interaction: {
+            mode: "index",
+            intersect: false,
+          },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                afterBody: function (context) {
+                  const year = context[0].label;
+                  return ["", `Breakthrough Song: ${breakThroughSongs[year]}`];
+                },
+              },
+            },
+          },
+        },
+      });
+
+      const songTitles = [
+        "Essence",
+        "Calm Down",
+        "Love Nwantiti",
+        "Last Last",
+        "Peru",
+        "Ye",
+        "Sungba",
+        "JHUS",
+        "Higher",
+        "Rush",
+        "Unavailable",
+        "Sofia",
+        "Sensational",
+        "Ke Star",
+        "Jabulani",
+      ];
+      const artists = [
+        "Wizkid ft. Tems",
+        "Rema ft. Selena Gomez",
+        "CKay",
+        "Burna Boy",
+        "Fireboy DML ft. Ed Sheeran",
+        "Burna Boy",
+        "Asake ft. Burna Boy",
+        "Omah Lay ft. Justin Bieber",
+        "Burna Boy",
+        "Ayra Starr",
+        "Davido ft. Musa Keys",
+        "Omah Lay",
+        "Wizkid ft. Chris Brown",
+        "Focalistic ft. Davido",
+        "Kabza De Small",
+      ];
+      const releaseYears = [
+        2020, 2022, 2019, 2022, 2021, 2018, 2022, 2021, 2023, 2023, 2023, 2020,
+        2023, 2021, 2022,
+      ];
+
+      const spotifyGlobalPeaks = [
+        1, 2, 3, 4, 5, 12, 18, 8, 6, 9, 11, 22, 14, 28, 31,
+      ];
+      const tiktokVideosMillions = [
+        4.2, 8.7, 15.4, 3.1, 5.6, 2.8, 1.9, 6.2, 2.4, 4.8, 3.3, 1.6, 2.1, 2.7,
+        1.4,
+      ];
+      const billboardWeeks = [18, 31, 12, 9, 14, 0, 0, 7, 6, 5, 4, 0, 3, 0, 0];
+      const countriesCharted = [
+        42, 58, 51, 38, 44, 22, 19, 34, 31, 28, 27, 18, 24, 16, 14,
+      ];
+
+      const subGenres = [
+        "Afropop",
+        "Afrorave",
+        "Afropop",
+        "Afrofusion",
+        "Afropop",
+        "Afrofusion",
+        "Afrobeats/Fuji",
+        "Afropop",
+        "Afrofusion",
+        "Afropop",
+        "Afropop",
+        "Afropop",
+        "Afropop",
+        "Amapiano",
+        "Amapiano",
+      ];
+      const musicCharts = document
+        .getElementById("musicCharts")
+        .getContext("2d");
+      const musicChart = new Chart(musicCharts, {
+        type: "bar",
+        data: {
+          labels: songTitles,
+          datasets: [
+            {
+              label: "Country charted",
+              data: countriesCharted,
+            },
+          ],
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+
+          plugins: {
+            tooltip: {
+              callbacks: {
+                afterLabel: function (context) {
+                  const index = context.dataIndex;
+
+                  return [
+                    `Artist: ${artists[index]}`,
+                    `Year: ${releaseYears[index]}`,
+                    `Spotify Peak: #${spotifyGlobalPeaks[index]}`,
+                    `TikTok Videos: ${tiktokVideosMillions[index]}M`,
+                    `Billboard Weeks: ${billboardWeeks[index]}`,
+                    `Genre: ${subGenres[index]}`,
+                  ];
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Countries Charted",
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Songs",
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
